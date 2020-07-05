@@ -41,10 +41,10 @@ public class ProjectService {
 
     @Transactional
     public ProjectDTO update(Long existingId, ProjectDTO request) {
-        ProjectDTO existingEntity = findById(existingId);
-        existingEntity.setName(request.getName());
+        ProjectDTO foundProject = findById(existingId);
+        foundProject.setName(request.getName());
 
-        Project savedEntity = repository.save(mapper.toEntity(existingEntity));
+        Project savedEntity = repository.save(mapper.toEntity(foundProject));
         return mapper.toDTO(savedEntity);
     }
 
