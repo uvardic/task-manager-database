@@ -1,0 +1,15 @@
+schema {
+    query: RootQueries
+    mutation: RootMutations
+}
+
+type RootQueries {
+    findProjectById(id: ID!): Project
+    findAllProjects: [Project]
+}
+
+type RootMutations {
+    deleteProjectById(exitingId: ID!): ID
+    saveProject(request: ProjectRequest!): Project
+    updateProject(existingId: ID!, request: ProjectRequest!): Project
+}
