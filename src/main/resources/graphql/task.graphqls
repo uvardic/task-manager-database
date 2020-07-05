@@ -1,0 +1,13 @@
+type Task {
+    id: ID!
+    name: String
+    description: String
+    section: Section
+}
+
+input TaskRequest {
+    id: ID
+    name: String
+    description: String
+    section: SectionRequest
+}

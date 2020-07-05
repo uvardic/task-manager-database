@@ -9,6 +9,9 @@ type RootQueries {
 
     findSectionById(id: ID!): Section
     findAllSections: [Section]
+
+    findTaskById(id: ID!): Task
+    findAllTasks: [Task]
 }
 
 type RootMutations {
@@ -19,4 +22,8 @@ type RootMutations {
     deleteSectionById(existingId: ID!): ID
     saveSection(request: SectionRequest!): Section
     updateSection(existingId: ID!, request: SectionRequest!): Section
+
+    deleteTaskById(exsitingId: ID!): ID
+    saveTask(request: TaskRequest): Task
+    updateTask(existingId: ID!, request: TaskRequest!): Task
 }
