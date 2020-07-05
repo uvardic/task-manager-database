@@ -6,10 +6,11 @@ import org.hibernate.annotations.OnDeleteAction;
 import taskmanager.database.section.domain.Section;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @Entity
-public class Task {
+public class Task implements Serializable {
 
     @Id
     @GeneratedValue
