@@ -8,6 +8,7 @@ type RootQueries {
     findAllProjects: [Project]
 
     findSectionById(id: ID!): Section
+    findAllSectionsOrderedByIndex: [Section]
     findAllSections: [Section]
 
     findTaskById(id: ID!): Task

@@ -19,6 +19,9 @@ public class Section implements Serializable {
     @Column(nullable = false)
     private String name;
 
+    @Column(name = "index_in_project")
+    private Integer index;
+
     @JoinColumn(nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @ManyToOne(fetch = FetchType.EAGER, optional = false)

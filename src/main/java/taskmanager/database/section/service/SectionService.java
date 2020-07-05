@@ -57,6 +57,10 @@ public class SectionService {
                 ));
     }
 
+    public List<SectionDTO> findAllOrderByIndex() {
+        return mapper.toDTOList(repository.findAllByOrderByIndex());
+    }
+
     public List<SectionDTO> findAll() {
         return mapper.toDTOList(repository.findAll());
     }
