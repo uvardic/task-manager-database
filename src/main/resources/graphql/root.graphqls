@@ -12,6 +12,9 @@ type RootQueries {
 
     findTaskById(id: ID!): Task
     findAllTasks: [Task]
+
+    findCommentById(id: ID!): Comment
+    findAllComments: [Comment]
 }
 
 type RootMutations {
@@ -26,4 +29,8 @@ type RootMutations {
     deleteTaskById(exsitingId: ID!): ID
     saveTask(request: TaskRequest): Task
     updateTask(existingId: ID!, request: TaskRequest!): Task
+
+    deleteCommentById(exsitingId: ID!): ID
+    saveComment(request: CommentRequest): Comment
+#    updateComment(existingId: ID!, request: CommentRequest!): Comment
 }

@@ -48,11 +48,11 @@ public class CommentService {
 //        return mapper.toDTO(savedEntity);
 //    }
 
-    public CommentDTO findById(Long existingId) {
-        return repository.findById(existingId)
+    public CommentDTO findById(Long id) {
+        return repository.findById(id)
                 .map(mapper::toDTO)
                 .orElseThrow(() -> new CommentNotFoundException(
-                        String.format("Comment with id: %d, wasn't found!", existingId)
+                        String.format("Comment with id: %d, wasn't found!", id)
                 ));
     }
 
