@@ -1,7 +1,7 @@
 package taskmanager.database.section.dto;
 
 import lombok.Data;
-import taskmanager.database.project.domain.Project;
+import taskmanager.database.project.dto.ProjectDTO;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -16,6 +16,6 @@ public class SectionDTO {
     private String name;
 
     @NotNull
-    private Project project;
+    private ProjectDTO project;
 
 }

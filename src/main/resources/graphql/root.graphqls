@@ -6,10 +6,17 @@ schema {
 type RootQueries {
     findProjectById(id: ID!): Project
     findAllProjects: [Project]
+
+    findSectionById(id: ID!): Section
+    findAllSections: [Section]
 }
 
 type RootMutations {
     deleteProjectById(exitingId: ID!): ID
     saveProject(request: ProjectRequest!): Project
     updateProject(existingId: ID!, request: ProjectRequest!): Project
+
+    deleteSectionById(existingId: ID!): ID
+    saveSection(request: SectionRequest!): Section
+    updateSection(existingId: ID!, request: SectionRequest!): Section
 }
