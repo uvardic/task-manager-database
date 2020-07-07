@@ -23,8 +23,8 @@ public class SectionQueryResolver implements GraphQLQueryResolver {
         return service.findById(id);
     }
 
-    public List<SectionDTO> findAllSectionsOrderedByIndex() {
-        return service.findAllOrderByIndex();
+    public List<SectionDTO> findAllSectionsByProjectIdOrderByIndexInProject(Long projectId) {
+        return service.findAllByProjectIdOrderByIndexInProject(projectId);
     }
 
     public List<SectionDTO> findAllSections() {
