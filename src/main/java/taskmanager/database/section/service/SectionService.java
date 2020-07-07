@@ -43,6 +43,7 @@ public class SectionService {
     public SectionDTO update(Long existingId, SectionDTO request) {
         SectionDTO foundSection = findById(existingId);
         foundSection.setName(request.getName());
+        foundSection.setIndexInProject(request.getIndexInProject());
         foundSection.setProject(request.getProject());
 
         Section savedEntity = repository.save(mapper.toEntity(foundSection));
