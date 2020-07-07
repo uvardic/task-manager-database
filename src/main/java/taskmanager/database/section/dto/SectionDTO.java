@@ -16,8 +16,9 @@ public class SectionDTO {
     @NotBlank
     private String name;
 
+    @NotNull
     @PositiveOrZero
-    private Integer index;
+    private Integer indexInProject;
 
     @NotNull
     private ProjectDTO project;

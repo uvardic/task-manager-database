@@ -43,6 +43,7 @@ public class SectionService {
     public SectionDTO update(Long existingId, SectionDTO request) {
         SectionDTO foundSection = findById(existingId);
         foundSection.setName(request.getName());
+        foundSection.setIndexInProject(request.getIndexInProject());
         foundSection.setProject(request.getProject());
 
         Section savedEntity = repository.save(mapper.toEntity(foundSection));
@@ -57,8 +58,8 @@ public class SectionService {
                 ));
     }
 
-    public List<SectionDTO> findAllOrderByIndex() {
-        return mapper.toDTOList(repository.findAllByOrderByIndex());
+    public List<SectionDTO> findAllByProjectIdOrderByIndexInProject(Long projectId) {
+        return mapper.toDTOList(repository.findAllByProjectIdOrderByIndexInProject(projectId));
     }
 
     public List<SectionDTO> findAll() {

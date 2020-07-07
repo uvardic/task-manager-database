@@ -19,8 +19,8 @@ public class Section implements Serializable {
     @Column(nullable = false)
     private String name;
 
-    @Column(name = "index_in_project")
-    private Integer index;
+    @Column(nullable = false)
+    private Integer indexInProject;
 
     @JoinColumn(nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
