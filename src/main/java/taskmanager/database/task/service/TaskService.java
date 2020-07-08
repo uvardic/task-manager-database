@@ -58,6 +58,10 @@ public class TaskService {
                 ));
     }
 
+    public List<TaskDTO> findAllBySectionIdOrderByIndexInSection(Long sectionId) {
+        return mapper.toDTOList(repository.findAllBySectionIdOrderByIndexInSection(sectionId));
+    }
+
     public List<TaskDTO> findAll() {
         return mapper.toDTOList(repository.findAll());
     }

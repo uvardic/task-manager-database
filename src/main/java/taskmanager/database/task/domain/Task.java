@@ -21,6 +21,9 @@ public class Task implements Serializable {
 
     private String description;
 
+    @Column(nullable = false)
+    private Integer indexInSection;
+
     @JoinColumn(nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @ManyToOne(fetch = FetchType.EAGER, optional = false)

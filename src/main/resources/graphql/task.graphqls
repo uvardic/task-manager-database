@@ -1,13 +1,15 @@
 type Task {
     id: ID!
     name: String
-    description: String
+    description: String,
+    indexInSection: Int,
     section: Section
 }
 
 input TaskRequest {
     id: ID
     name: String
-    description: String
+    description: String,
+    indexInSection: Int,
     section: SectionRequest
 }
