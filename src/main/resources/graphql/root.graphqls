@@ -12,6 +12,7 @@ type RootQueries {
     findAllSections: [Section]
 
     findTaskById(id: ID!): Task
+    findAllTasksBySectionIdOrderByIndexInSection(sectionId: ID!): [Task]
     findAllTasks: [Task]
 
     findCommentById(id: ID!): Comment
