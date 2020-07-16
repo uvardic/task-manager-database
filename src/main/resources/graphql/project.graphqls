@@ -1,9 +1,11 @@
 type Project {
     id: ID!
     name: String
+    sections: [Section]
 }
 
 input ProjectRequest {
     id: ID
     name: String
+    sections: [SectionRequest]
 }

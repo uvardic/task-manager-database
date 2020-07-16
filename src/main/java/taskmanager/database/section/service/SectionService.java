@@ -3,6 +3,7 @@ package taskmanager.database.section.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import taskmanager.database.common.CycleAvoidingMappingContext;
 import taskmanager.database.section.domain.Section;
 import taskmanager.database.section.dto.SectionDTO;
 import taskmanager.database.section.exception.SectionNotFoundException;
@@ -21,6 +22,8 @@ public class SectionService {
 
     private final SectionMapper mapper;
 
+    private final CycleAvoidingMappingContext mappingContext;
+
     @Transactional
     public void deleteById(Long existingId) {
         if (sectionNotFound(existingId))
@@ -35,35 +38,36 @@ public class SectionService {
 
     @Transactional
     public SectionDTO save(SectionDTO request) {
-        Section savedEntity = repository.save(mapper.toEntity(request));
-        return mapper.toDTO(savedEntity);
+        Section savedEntity = repository.save(mapper.toEntity(request, mappingContext));
+        return mapper.toDTO(savedEntity, mappingContext);
     }
 
     @Transactional
     public SectionDTO update(Long existingId, SectionDTO request) {
         SectionDTO foundSection = findById(existingId);
         foundSection.setName(request.getName());
-        foundSection.setIndexInProject(request.getIndexInProject());
+        foundSection.setSequence(request.getSequence());
         foundSection.setProject(request.getProject());
+        foundSection.setTasks(request.getTasks());
 
-        Section savedEntity = repository.save(mapper.toEntity(foundSection));
-        return mapper.toDTO(savedEntity);
+        Section savedEntity = repository.save(mapper.toEntity(foundSection, mappingContext));
+        return mapper.toDTO(savedEntity, mappingContext);
     }
 
     public SectionDTO findById(Long id) {
         return repository.findById(id)
-                .map(mapper::toDTO)
+                .map(section -> mapper.toDTO(section, mappingContext))
                 .orElseThrow(() -> new SectionNotFoundException(
                         String.format("Section with id: %d, wasn't found!", id)
                 ));
     }
 
-    public List<SectionDTO> findAllByProjectIdOrderByIndexInProject(Long projectId) {
-        return mapper.toDTOList(repository.findAllByProjectIdOrderByIndexInProject(projectId));
+    public List<SectionDTO> findAllByProjectIdOrderBySequence(Long projectId) {
+        return mapper.toDTOList(repository.findAllByProjectIdOrderBySequence(projectId), mappingContext);
     }
 
     public List<SectionDTO> findAll() {
-        return mapper.toDTOList(repository.findAll());
+        return mapper.toDTOList(repository.findAll(), mappingContext);
     }
 
 }

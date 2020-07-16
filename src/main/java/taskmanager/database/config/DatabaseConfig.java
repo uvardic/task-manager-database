@@ -9,5 +9,5 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EntityScan("taskmanager.database")
 @EnableJpaRepositories("taskmanager.database")
-public class DatabaseConfiguration {
+public class DatabaseConfig {
 }

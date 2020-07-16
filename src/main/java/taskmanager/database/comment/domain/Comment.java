@@ -1,8 +1,6 @@
 package taskmanager.database.comment.domain;
 
 import lombok.Data;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import taskmanager.database.task.domain.Task;
 
 import javax.persistence.*;
@@ -19,9 +17,8 @@ public class Comment implements Serializable {
     @Column(nullable = false, updatable = false)
     private String content;
 
-    @JoinColumn(nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name="task_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Task task;
 
 }

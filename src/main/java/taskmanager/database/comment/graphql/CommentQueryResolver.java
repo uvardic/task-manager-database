@@ -23,8 +23,7 @@ public class CommentQueryResolver implements GraphQLQueryResolver {
         return service.findById(id);
     }
 
-    public List<CommentDTO> findAllComments() {
-        return service.findAll();
+    public List<CommentDTO> findAllCommentsByTaskId(Long taskId) {
+        return service.findAllByTaskId(taskId);
     }
-
 }

@@ -1,13 +1,15 @@
 type Section {
     id: ID!
     name: String,
-    indexInProject: Int,
+    sequence: Int,
     project: Project
+    tasks: [Task]
 }
 
 input SectionRequest {
     id: ID
     name: String
-    indexInProject: Int,
+    sequence: Int,
     project: ProjectRequest
+    tasks: [TaskRequest]
 }

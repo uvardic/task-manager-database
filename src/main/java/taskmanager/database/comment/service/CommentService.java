@@ -8,6 +8,7 @@ import taskmanager.database.comment.dto.CommentDTO;
 import taskmanager.database.comment.exception.CommentNotFoundException;
 import taskmanager.database.comment.mapper.CommentMapper;
 import taskmanager.database.comment.repository.CommentRepository;
+import taskmanager.database.common.CycleAvoidingMappingContext;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -20,6 +21,8 @@ public class CommentService {
     private final CommentRepository repository;
 
     private final CommentMapper mapper;
+
+    private final CycleAvoidingMappingContext mappingContext;
 
     @Transactional
     public void deleteById(Long existingId) {
@@ -35,8 +38,8 @@ public class CommentService {
 
     @Transactional
     public CommentDTO save(CommentDTO request) {
-        Comment savedEntity = repository.save(mapper.toEntity(request));
-        return mapper.toDTO(savedEntity);
+        Comment savedEntity = repository.save(mapper.toEntity(request, mappingContext));
+        return mapper.toDTO(savedEntity, mappingContext);
     }
 
 //    no need for an update method at this time
@@ -50,14 +53,14 @@ public class CommentService {
 
     public CommentDTO findById(Long id) {
         return repository.findById(id)
-                .map(mapper::toDTO)
+                .map(comment -> mapper.toDTO(comment, mappingContext))
                 .orElseThrow(() -> new CommentNotFoundException(
                         String.format("Comment with id: %d, wasn't found!", id)
                 ));
     }
 
-    public List<CommentDTO> findAll() {
-        return mapper.toDTOList(repository.findAll());
+    public List<CommentDTO> findAllByTaskId(Long taskId) {
+        return mapper.toDTOList(repository.findAllByTaskId(taskId), mappingContext);
     }
 
 }

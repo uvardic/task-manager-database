@@ -1,11 +1,14 @@
 package taskmanager.database.task.dto;
 
 import lombok.Data;
+import taskmanager.database.comment.dto.CommentDTO;
 import taskmanager.database.section.dto.SectionDTO;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 public class TaskDTO {
@@ -20,9 +23,11 @@ public class TaskDTO {
 
     @NotNull
     @PositiveOrZero
-    private Integer indexInSection;
+    private Integer sequence;
 
     @NotNull
     private SectionDTO section;
+
+    private List<@NotNull CommentDTO> comments = new ArrayList<>();
 
 }

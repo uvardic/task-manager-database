@@ -23,12 +23,8 @@ public class TaskQueryResolver implements GraphQLQueryResolver {
         return service.findById(id);
     }
 
-    public List<TaskDTO> findAllTasksBySectionIdOrderByIndexInSection(Long sectionId) {
-        return service.findAllBySectionIdOrderByIndexInSection(sectionId);
-    }
-
-    public List<TaskDTO> findAllTasks() {
-        return service.findAll();
+    public List<TaskDTO> findAllTasksBySectionIdOrderBySequence(Long sectionId) {
+        return service.findAllBySectionIdOrderBySequence(sectionId);
     }
 
 }

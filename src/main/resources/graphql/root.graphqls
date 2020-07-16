@@ -8,19 +8,18 @@ type RootQueries {
     findAllProjects: [Project]
 
     findSectionById(id: ID!): Section
-    findAllSectionsByProjectIdOrderByIndexInProject(projectId: ID!): [Section]
     findAllSections: [Section]
+    findAllSectionsByProjectIdOrderBySequence(projectId: ID!): [Section]
 
     findTaskById(id: ID!): Task
-    findAllTasksBySectionIdOrderByIndexInSection(sectionId: ID!): [Task]
-    findAllTasks: [Task]
+    findAllTasksBySectionIdOrderBySequence(sectionId: ID!): [Task]
 
     findCommentById(id: ID!): Comment
-    findAllComments: [Comment]
+    findAllCommentsByTaskId(taskId: ID!): [Comment]
 }
 
 type RootMutations {
-    deleteProjectById(exitingId: ID!): ID
+    deleteProjectById(existingId: ID!): ID
     saveProject(request: ProjectRequest!): Project
     updateProject(existingId: ID!, request: ProjectRequest!): Project
 
@@ -28,7 +27,7 @@ type RootMutations {
     saveSection(request: SectionRequest!): Section
     updateSection(existingId: ID!, request: SectionRequest!): Section
 
-    deleteTaskById(exsitingId: ID!): ID
+    deleteTaskById(existingId: ID!): ID
     saveTask(request: TaskRequest): Task
     updateTask(existingId: ID!, request: TaskRequest!): Task
 
