@@ -1,9 +1,9 @@
 schema {
-    query: RootQueries
-    mutation: RootMutations
+    query: Queries
+    mutation: Mutations
 }
 
-type RootQueries {
+type Queries {
     findProjectById(id: ID!): Project
     findAllProjects: [Project]
 
@@ -18,7 +18,7 @@ type RootQueries {
     findAllCommentsByTaskId(taskId: ID!): [Comment]
 }
 
-type RootMutations {
+type Mutations {
     deleteProjectById(existingId: ID!): ID
     saveProject(request: ProjectRequest!): Project
     updateProject(existingId: ID!, request: ProjectRequest!): Project
