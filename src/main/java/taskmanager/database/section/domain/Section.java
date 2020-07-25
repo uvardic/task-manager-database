@@ -21,7 +21,7 @@ public class Section implements Serializable {
     private String name;
 
     @Column(nullable = false)
-    private Integer sequence;
+    private Double sequence;
 
     @JoinColumn(name = "project_id", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

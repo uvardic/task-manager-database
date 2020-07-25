@@ -2,7 +2,7 @@ type Task {
     id: ID!
     name: String
     description: String,
-    sequence: Int,
+    sequence: Float,
     section: Section
 }
 
@@ -10,6 +10,6 @@ input TaskRequest {
     id: ID
     name: String
     description: String,
-    sequence: Int,
+    sequence: Float,
     section: SectionRequest
 }

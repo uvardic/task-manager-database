@@ -6,7 +6,7 @@ import taskmanager.database.task.dto.TaskDTO;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Positive;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +20,8 @@ public class SectionDTO {
     private String name;
 
     @NotNull
-    @PositiveOrZero
-    private Integer sequence;
+    @Positive
+    private Double sequence;
 
     @NotNull
     private ProjectDTO project;

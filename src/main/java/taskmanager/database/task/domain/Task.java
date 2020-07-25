@@ -23,7 +23,7 @@ public class Task implements Serializable {
     private String description;
 
     @Column(nullable = false)
-    private Integer sequence;
+    private Double sequence;
 
     @JoinColumn(name = "section_id", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

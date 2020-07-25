@@ -1,7 +1,7 @@
 type Section {
     id: ID!
     name: String,
-    sequence: Int,
+    sequence: Float,
     project: Project
     tasks: [Task]
 }
@@ -9,7 +9,7 @@ type Section {
 input SectionRequest {
     id: ID
     name: String
-    sequence: Int,
+    sequence: Float,
     project: ProjectRequest
     tasks: [TaskRequest]
 }
